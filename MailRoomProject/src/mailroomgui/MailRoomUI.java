@@ -15,6 +15,8 @@ import mailroomproject.*;
  * core system, via the coordinating object.
  *
  * @aythor Andrew Garner
+ * @date 26/01/2020
+ * @version 0.1
  */
 
 public class MailRoomUI extends javax.swing.JFrame {

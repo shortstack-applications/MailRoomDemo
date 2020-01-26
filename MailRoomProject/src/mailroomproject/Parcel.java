@@ -8,7 +8,9 @@ import java.time.LocalDateTime;
 
 /**
  *
- * @author Andrew Garner
+ * @aythor Andrew Garner
+ * @date 26/01/2020
+ * @version 0.1
  */
 public class Parcel {
     String barcode;
