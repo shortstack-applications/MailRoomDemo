@@ -11,7 +11,7 @@ import java.util.*;
 
 /**
  *
- * @aythor Andrew Garner
+ * @author Andrew Garner
  * @date 26/01/2020
  * @version 0.1
  */
@@ -46,7 +46,7 @@ public class MailRoomCoord {
     public String addParcel(String aName, String aCourier, String barcode, String aDate) {
         Parcel newParcel = new Parcel(aName, aCourier, barcode, aDate);
         parcelList.add(newParcel);
-        return barcode + " from " + aCourier + " has been receieved at " + aDate;
+        return barcode + " from " + aCourier + " has been receieved at " + aDate + " by " + aName;
     }
     
     /**

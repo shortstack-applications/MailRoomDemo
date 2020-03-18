@@ -14,7 +14,7 @@ import mailroomproject.*;
  * Creates a GUI for Mail Room system, and allows user interaction with the 
  * core system, via the coordinating object.
  *
- * @aythor Andrew Garner
+ * @author Andrew Garner
  * @date 26/01/2020
  * @version 0.1
  */
@@ -44,10 +44,10 @@ public class MailRoomUI extends javax.swing.JFrame {
         jDialog1 = new javax.swing.JDialog();
         jDialog2 = new javax.swing.JDialog();
         jDialog3 = new javax.swing.JDialog();
+        courierGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        staffName = new javax.swing.JTextField();
-        courierName = new javax.swing.JTextField();
+        courierButton1 = new javax.swing.JRadioButton();
         recordDelivery = new javax.swing.JButton();
         barcodeNumber = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -55,6 +55,11 @@ public class MailRoomUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         recordResults = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        staffList = new javax.swing.JList<>();
+        courierButton2 = new javax.swing.JRadioButton();
+        courierButton3 = new javax.swing.JRadioButton();
+        courierButton4 = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         listOfParcels = new javax.swing.JList<>();
@@ -109,10 +114,24 @@ public class MailRoomUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        courierGroup1.add(courierButton1);
+        courierButton1.setText("Royal Mail");
+        courierButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courierButton1ActionPerformed(evt);
+            }
+        });
+
         recordDelivery.setText("Record Delivery");
         recordDelivery.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 recordDeliveryActionPerformed(evt);
+            }
+        });
+
+        barcodeNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                barcodeNumberActionPerformed(evt);
             }
         });
 
@@ -126,57 +145,85 @@ public class MailRoomUI extends javax.swing.JFrame {
 
         jLabel7.setText("Enter parcel details then click 'Record Delivery':");
 
+        jScrollPane2.setViewportView(staffList);
+
+        courierGroup1.add(courierButton2);
+        courierButton2.setText("UPS");
+
+        courierGroup1.add(courierButton3);
+        courierButton3.setText("FedEx");
+
+        courierGroup1.add(courierButton4);
+        courierButton4.setText("ParcelForce");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(courierName, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(recordResults, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(barcodeNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(recordDelivery, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(539, 539, 539))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(recordResults, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                                        .addGap(77, 77, 77))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(courierButton1)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(courierButton2)
+                                    .addComponent(recordDelivery, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(barcodeNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(courierButton3)
+                            .addComponent(courierButton4))
+                        .addGap(430, 430, 430))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
                 .addComponent(jLabel7)
-                .addGap(41, 41, 41)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(courierButton1)
+                            .addComponent(courierButton3))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(courierName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(courierButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(courierButton4))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(barcodeNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(recordDelivery, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(recordResults, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Record", jPanel2);
@@ -208,7 +255,7 @@ public class MailRoomUI extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(68, 68, 68)
                         .addComponent(dispatchParcel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(363, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +266,7 @@ public class MailRoomUI extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dispatchParcel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addComponent(recordResults2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
         );
@@ -270,7 +317,7 @@ public class MailRoomUI extends javax.swing.JFrame {
                             .addComponent(firstName)))
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(staffResults, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,7 +346,7 @@ public class MailRoomUI extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lastNameL)
                             .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(addStaffMember, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -350,28 +397,10 @@ public class MailRoomUI extends javax.swing.JFrame {
         lastName.setText("");
         staffCount++;
         listCurrentStaff.setListData(new Vector<String>(mailRoom.getStaffDetails(mailRoom.getStaffMembers())));
+        staffList.setListData(new Vector<String>(mailRoom.getStaffDetails(mailRoom.getStaffMembers())));
     }//GEN-LAST:event_addStaffMemberActionPerformed
 
     
-    //records a new delivery with parcel details
-    private void recordDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordDeliveryActionPerformed
-        // Create a new parcel object based on the input fields
-        LocalDateTime curTime = LocalDateTime.now();
-        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String formattedTime = curTime.format(formatTime);
-
-        String userName = staffName.getText();
-        String courier = courierName.getText();
-        String barcodeRef = barcodeNumber.getText();
-
-        recordResults.setText(mailRoom.addParcel(userName, courier, barcodeRef, formattedTime));
-        listOfParcels.setListData(new Vector<String>(mailRoom.getParcelList(mailRoom.getParcels())));
-
-        staffName.setText("");
-        courierName.setText("");
-        barcodeNumber.setText("");
-    }//GEN-LAST:event_recordDeliveryActionPerformed
-
     
     //dispatches a selected parcel from list 
     private void dispatchParcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dispatchParcelActionPerformed
@@ -386,6 +415,42 @@ public class MailRoomUI extends javax.swing.JFrame {
         recordResults2.setText(response);
     }//GEN-LAST:event_dispatchParcelActionPerformed
 
+    private void courierButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courierButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_courierButton1ActionPerformed
+
+    private void barcodeNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barcodeNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_barcodeNumberActionPerformed
+
+    //records a new delivery with parcel details
+    private void recordDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordDeliveryActionPerformed
+        // Create a new parcel object based on the input fields
+        LocalDateTime curTime = LocalDateTime.now();
+        DateTimeFormatter formatTime = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String formattedTime = curTime.format(formatTime);
+
+        String userName = staffList.getSelectedValue();
+        
+        String courier = "";
+        if(courierButton1.isSelected()) {
+            courier = courierButton1.getText();
+        } else if(courierButton2.isSelected()) {
+            courier = courierButton2.getText();
+        } else if(courierButton3.isSelected()) {
+            courier = courierButton3.getText();
+        } else if(courierButton4.isSelected()) {
+            courier = courierButton4.getText();
+        }
+        
+        String barcodeRef = barcodeNumber.getText();
+
+        recordResults.setText(mailRoom.addParcel(userName, courier, barcodeRef, formattedTime));
+        listOfParcels.setListData(new Vector<String>(mailRoom.getParcelList(mailRoom.getParcels())));
+        barcodeNumber.setText("");
+    }//GEN-LAST:event_recordDeliveryActionPerformed
+   
+    
     /**
      * @param args the command line arguments
      */
@@ -424,7 +489,11 @@ public class MailRoomUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addStaffMember;
     private javax.swing.JTextField barcodeNumber;
-    private javax.swing.JTextField courierName;
+    private javax.swing.JRadioButton courierButton1;
+    private javax.swing.JRadioButton courierButton2;
+    private javax.swing.JRadioButton courierButton3;
+    private javax.swing.JRadioButton courierButton4;
+    private javax.swing.ButtonGroup courierGroup1;
     private javax.swing.JButton dispatchParcel;
     private javax.swing.JTextField firstName;
     private javax.swing.JLabel firstNameL;
@@ -442,6 +511,7 @@ public class MailRoomUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane4;
@@ -454,7 +524,7 @@ public class MailRoomUI extends javax.swing.JFrame {
     private javax.swing.JTextField recordResults;
     private javax.swing.JTextField recordResults2;
     private javax.swing.JButton removeStaffMember;
-    private javax.swing.JTextField staffName;
+    private javax.swing.JList<String> staffList;
     private javax.swing.JTextField staffResults;
     // End of variables declaration//GEN-END:variables
 }

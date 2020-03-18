@@ -7,7 +7,7 @@ package mailroomproject;
 
 /**
  *
- * @aythor Andrew Garner
+ * @author Andrew Garner
  * @date 26/01/2020
  * @version 0.1
  */
@@ -40,6 +40,15 @@ public class StaffMember {
         String lastN = this.lastName;
         int id = this.id;
         return firstN + " " + lastN + "(" + id + ")";
+    }
+    
+     /**
+     * Returns the first name of the staff member
+     *
+     * @return the first name
+     */
+    public String getFirstName() {
+        return this.firstName;
     }
     
     /**

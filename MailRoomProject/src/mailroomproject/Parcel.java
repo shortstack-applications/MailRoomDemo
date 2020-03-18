@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 /**
  *
- * @aythor Andrew Garner
+ * @author Andrew Garner
  * @date 26/01/2020
  * @version 0.1
  */
