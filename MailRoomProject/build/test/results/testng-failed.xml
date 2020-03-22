@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [MailRoomProject]">
+  <test name="TestNG tests(failed)">
+    <classes>
+      <class name="mailroomproject.StaffMemberNGTest">
+        <methods>
+          <include name="setUpMethod"/>
+          <include name="tearDownMethod"/>
+          <include name="testGetFirstName"/>
+          <include name="tearDownClass"/>
+          <include name="testGetStaffID"/>
+          <include name="setUpClass"/>
+          <include name="testGetStaffName"/>
+        </methods>
+      </class> <!-- mailroomproject.StaffMemberNGTest -->
+    </classes>
+  </test> <!-- TestNG tests(failed) -->
+  <test name="mailroomproject.StaffMemberTest(failed)" junit="true">
+    <classes>
+      <class name="mailroomproject.StaffMemberTest">
+        <methods>
+          <include name="testGetStaffName"/>
+          <include name="testGetStaffID"/>
+          <include name="testGetFirstName"/>
+        </methods>
+      </class> <!-- mailroomproject.StaffMemberTest -->
+      <class name="mailroomproject.StaffMemberNGTest">
+        <methods>
+          <include name="setUpMethod"/>
+          <include name="tearDownMethod"/>
+          <include name="tearDownClass"/>
+          <include name="setUpClass"/>
+        </methods>
+      </class> <!-- mailroomproject.StaffMemberNGTest -->
+    </classes>
+  </test> <!-- mailroomproject.StaffMemberTest(failed) -->
+</suite> <!-- Failed suite [MailRoomProject] -->
