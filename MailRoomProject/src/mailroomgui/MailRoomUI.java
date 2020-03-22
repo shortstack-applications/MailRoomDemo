@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mailroomgui;
 
 import java.time.LocalDateTime;
@@ -15,7 +10,7 @@ import mailroomproject.*;
  * core system, via the coordinating object.
  *
  * @author Andrew Garner
- * @date 26/01/2020
+ * updated on 26/01/2020
  * @version 0.1
  */
 

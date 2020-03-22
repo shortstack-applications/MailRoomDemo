@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mailroomproject;
 
 import java.time.LocalDateTime;
@@ -12,7 +7,7 @@ import java.util.*;
 /**
  *
  * @author Andrew Garner
- * @date 26/01/2020
+ * updated on 26/01/2020
  * @version 0.1
  */
 public class MailRoomCoord {
@@ -42,6 +37,10 @@ public class MailRoomCoord {
      * Creates and adds a parcel to parcelList
      *
      * @return a response String with parcel details
+     * @param aName is the name of the employee booking in the parcel
+     * @param aCourier is the courier who delivered the parcel
+     * @param barcode is the unique barcode scanned on the parcel upon delivery
+     * @param aDate is the time and date of when the parcel was received
      */
     public String addParcel(String aName, String aCourier, String barcode, String aDate) {
         Parcel newParcel = new Parcel(aName, aCourier, barcode, aDate);
@@ -53,6 +52,9 @@ public class MailRoomCoord {
      * Creates and adds a StaffMember to staffList
      *
      * @return a response String with staff details
+     * @param firstName is the first name of the employee
+     * @param lastName is the last name of the employee
+     * @param ID is the unique ID of the employee
      */
     public String addStaffMember(String firstName, String lastName, int ID) {
         StaffMember aStaffMember = new StaffMember(firstName, lastName, ID);
@@ -64,6 +66,7 @@ public class MailRoomCoord {
      * Returns an ArrayList of all parcels barcodes
      *
      * @return an ArrayList containing all parcel barcodes
+     * @param anArray is the list of all parcels currently booked into the system
      */
     public ArrayList<String> getParcelList(ArrayList<Parcel> anArray) {
         ArrayList<String> parcelBarcodes = new ArrayList<String>();
@@ -79,6 +82,7 @@ public class MailRoomCoord {
      * Returns an ArrayList of all current staff members
      *
      * @return an ArrayList containing all current staff members
+     * @param anArray is the list of all current staff members
      */
     public ArrayList<String> getStaffDetails(ArrayList<StaffMember> anArray) {
         ArrayList<String> staffNames = new ArrayList<String>();
@@ -94,6 +98,8 @@ public class MailRoomCoord {
      * Dispatches a parcel and removes it from parcelList
      *
      * @return a response String
+     * @param aParcel is the unique barcode of the parcel
+     * @param aTime is the current time the parcel is being dispatched at
      */
     public String dispatchParcel(String aParcel, String aTime) {
         String parcelBarcode = null;
@@ -110,6 +116,7 @@ public class MailRoomCoord {
      * Removes a Staff Member from staffList
      *
      * @return a response String
+     * @param staffName is the full name and unique ID of the staff member
      */
     public String removeStaffMember(String staffName) {
         String staffDetails = null;
